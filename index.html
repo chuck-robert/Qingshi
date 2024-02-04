@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+        content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <meta http-equiv="Content-Security-Policy" content="upgrade-insecure-requests" />
+    <title>青师 | Qingshi</title>
+    <link rel="stylesheet" href="/assets/css/index.css">
+    <link rel="stylesheet" href="/assets/css/icon.css">
+</head>
+
+<body>
+    <div id="background"></div>
+    <div id="app">
+        <div id="msg"></div>
+        <div id="container">
+            <div id="toolsList">
+                <div class="top">
+                    <div>
+                        <div class="icon"><i class="fas fa-user-circle"></i></div>
+                        <div class="title">账号</div>
+                    </div>
+                    <div class="active" activeAble id="list_memo">
+                        <div class="icon"><i class="fas fa-edit"></i></div>
+                        <div class="title">笔记</div>
+                    </div>
+                    <div activeAble id="list_todos">
+                        <div class="icon"><i class="fas fa-list-ul"></i></div>
+                        <div class="title">代办</div>
+                    </div>
+                    <div activeAble id="list_star">
+                        <div class="icon"><i class="fas fa-star"></i></div>
+                        <div class="title">收藏</div>
+                    </div>
+                </div>
+                <div class="bottom">
+                    <div>
+                        <div class="icon"><i class="fas fa-info-circle"></i></div>
+                        <div class="title">关于</div>
+                    </div>
+                    <div>
+                        <div class="icon"><i class="fas fa-cog"></i></div>
+                        <div class="title">设置</div>
+                    </div>
+                </div>
+            </div>
+            <div id="memosList">
+                <div class="topTool">
+                    <div class="searchBar">
+                        <i class="fal fa-search"></i>
+                        <input type="text" autocomplete="off" placeholder="Search..." id="searchBox">
+                    </div>
+                    <div class="addBar" id="mainAddInput">
+                        <i class="fal fa-plus"></i>
+                    </div>
+                </div>
+                <div id="totalList"></div>
+            </div>
+            <div id="editor">
+                <div class="header">
+                    <div class="pages">
+                        <div class="page_item">标题</div>
+                    </div>
+                    <div class="page">
+                        <div class="information">
+                            <div class="image" style="background-image: url(/assets/image/icon_5.png);">
+                                <div class="content" id="note_cover"></div>
+                            </div>
+                            <div class="title">
+                                <input type="text" id="note_title" placeholder="标题">
+                            </div>
+                        </div>
+                        <div class="about">
+                            <i class="fas fa-star" id="about_star"></i>
+                            <i class="fal fa-ellipsis-h" id="about_more"></i>
+                        </div>
+                    </div>
+                </div>
+                <div class="editor-container">
+                    <div id="editorTextarea"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script src="/assets/js/marked.js"></script>
+    <script src="/assets/js/index.js"></script>
+
+</body>
+
+</html>
