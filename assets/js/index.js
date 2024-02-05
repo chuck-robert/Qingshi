@@ -157,6 +157,10 @@ function totalLoad(key) {
             loadMemo(memoId, key, iconId);
             editorJS = document.getElementById("editorJS");
             if (!editorJS) { rendering(); }
+            if (location.hash.split("#").join("") == "editor" && window.innerWidth <= 800) {
+                document.getElementsByTagName("body")[0].classList.remove("noEditor");
+            document.getElementsByTagName("body")[0].classList.add("hasEditor");
+        }
         });
         totalList.appendChild(divElement);
     });
@@ -278,7 +282,6 @@ function saveStar(mode, id) {
 if (GetQueryString("memoId")) {
     document.querySelector("div[data_memo_id=\"" + GetQueryString("memoId") + "\"]").click();
 }
-
 list_memo = document.getElementById("list_memo");
 list_todos = document.getElementById("list_todos");
 list_star = document.getElementById("list_star");
@@ -301,7 +304,6 @@ list_todos.onclick = function () {
     });
 
 }
-// 创建一个函数来生成列表项
 function createListItem(element) {
     var divElement = document.createElement("div");
     divElement.setAttribute("data_memo_id", element.id);
@@ -322,6 +324,10 @@ function createListItem(element) {
         loadMemo(memoId, "memos", iconId);
         editorJS = document.getElementById("editorJS");
         if (!editorJS) { rendering(); }
+        if (location.hash.split("#").join("") == "editor" && window.innerWidth <= 800) {
+            document.getElementsByTagName("body")[0].classList.remove("noEditor");
+            document.getElementsByTagName("body")[0].classList.add("hasEditor");
+        }
     });
     return divElement;
 }
@@ -332,8 +338,6 @@ list_star.onclick = function () {
     var obj = JSON.parse(localStorage.getItem("memoList")).memos;
     var totalList = document.getElementById("totalList");
     totalList.innerHTML = "";
-
-    // 判断star是否是true
     obj.forEach(function (element) {
         if (element.star) {
             var listItem = createListItem(element);
@@ -383,8 +387,6 @@ const about_actions = [
             "icon": "fas fa-file-import",
             "class": "",
             result: function result() {
-                // 导入txt或者md文件
-                // 创建按钮
                 input = document.createElement('input');
                 input.type = 'file';
                 input.accept = '.txt,.md';
@@ -411,7 +413,6 @@ const about_actions = [
             "icon": "fas fa-file-export",
             "class": "",
             result: function result() {
-                // 导出为html文件
                 const content = document.getElementById('editorTextarea').innerHTML;
                 const blob = new Blob([content], { type: 'text/html' });
                 const url = URL.createObjectURL(blob);
@@ -427,7 +428,6 @@ const about_actions = [
             "icon": "fas fa-file-export",
             "class": "",
             result: function result() {
-                // 导出为txt文件
                 const content = document.getElementById('editorTextarea').innerText;
                 const blob = new Blob([content], { type: 'text/plain' });
                 const url = URL.createObjectURL(blob);
@@ -454,8 +454,6 @@ const about_actions = [
                 if (indexToRemove !== -1) {
                     memosD.splice(indexToRemove, 1);
                     ls.memos = memosD;
-                    console.log("🚀 ~ result ~ ls:", ls)
-                    // id按顺序分配
                     for (var i = 0; i < ls.memos.length; i++) {
                         ls.memos[i].id = i;
                     }
@@ -499,4 +497,12 @@ am.onclick = function () {
             amm.style.display = "none";
         }
     }
+}
+
+if (location.hash.split("#").join("") !== "editor") {
+    document.getElementsByTagName("body")[0].classList.add("noEditor");
+}
+
+document.querySelector(".page_back.page_item").onclick = function () {
+    location.href = "index.html";
 }

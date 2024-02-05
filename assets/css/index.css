@@ -60,7 +60,8 @@ div#toolsList .icon {
     color: var(--c);
 }
 
-div#toolsList .active .icon {
+div#toolsList .active .icon,
+div#toolsList .bottom .icon:hover {
     --c: #0084ff;
     background: white;
 }
@@ -181,6 +182,7 @@ input#note_title {
     margin-right: 7px;
     color: #999999;
 }
+
 .editor-container {
     height: calc(100% - 55px);
 }
@@ -410,12 +412,15 @@ div#editorTextarea a {
 div#totalList {
     width: 100%;
     height: calc(100% - 60px);
+    overflow: auto;
 }
-div#totalList *{
+
+div#totalList * {
     user-select: none;
     -webkit-user-select: none;
-    -moz-user-select: none; 
+    -moz-user-select: none;
 }
+
 div#totalList>div {
     display: flex;
     align-items: center;
@@ -449,6 +454,7 @@ div#totalList>div {
 .infor_li {
     margin-left: 10px;
 }
+
 .about i {
     border-radius: 5px;
     font-size: 20px;
@@ -461,18 +467,24 @@ div#totalList>div {
     margin-left: 0;
     transition: all .3s;
 }
-.about i:hover{
+
+.about i:hover {
     background: #ededed;
 }
+
 .about i.fal.fa-ellipsis-h {
     font-size: 30px;
 }
-div#totalList>div.active, div#totalList>div:hover {
+
+div#totalList>div.active,
+div#totalList>div:hover {
     background: #f2f2f2ad;
 }
+
 i#about_star.active {
     color: #ffd43b;
 }
+
 div#about_more_menu {
     background: #ffffff70;
     padding: 5px;
@@ -501,13 +513,70 @@ div#about_more_menu button:hover {
 div#about_more_menu i {
     margin-right: 15px;
 }
+
 button.del {
     background: #ff000012 !important;
     margin-top: 10px;
 }
+
 .about_li * {
     font-size: 13px;
     color: #999999;
     font-weight: 100;
     margin: 5px 0 0 0;
+}
+
+.page_back.page_item {
+    width: 20px;
+    font-size: 25px;
+}
+@media screen and (max-width:800px) {
+    .page_back {
+        display: block !important;
+    }
+    .noEditor div#editor {
+        display: none;
+    }
+    .hasEditor div#memosList,
+    .hasEditor div#toolsList {
+        display: none;
+    }
+    .hasEditor div#editor{
+        width: 100%;
+    }
+    .noEditor div#container {
+        display: flex;
+        flex-direction: column-reverse;
+    }
+    .noEditor .top {
+        display: flex;
+        justify-content: center;
+    }
+    
+    .noEditor div#toolsList {
+        width: 100%;
+        height: 60px;
+    }
+    
+    .noEditor .icon {
+        width: 30px;
+        height: 30px !important;
+        margin: 4px 13px !important;
+    }
+    .noEditor div#memosList{
+        width: 100%;
+    }
+    .noEditor .top div {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+    
+    .noEditor div#toolsList .title {
+        display: block;
+        font-size: 10px;
+    }
+    input#note_title {
+        width: 100%;
+    }
 }
